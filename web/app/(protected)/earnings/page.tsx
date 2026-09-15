@@ -1,0 +1,3 @@
+import { PageHeading } from "@/components/page-heading";
+export default function EarningsPage() { return <><PageHeading title="Earnings" description="Estimated valuations and realized crypto remain separate."/><section className="grid gap-4 md:grid-cols-2"><article className="panel p-6"><p className="muted">Estimated INR</p><strong className="text-3xl">Not available</strong><p className="muted">No price or profitability source is connected.</p></article><article className="panel p-6"><p className="muted">Realized crypto</p><strong className="text-3xl">No data yet</strong><p className="muted">No pool-confirmed rewards have been recorded.</p></article></section></>; }
+

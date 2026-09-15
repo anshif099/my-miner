@@ -1,0 +1,67 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "users": {
+      "$userId": {
+        ".read": "auth != null && auth.uid === $userId",
+        ".write": false
+      }
+    },
+    "devices": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "deviceCommands": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "deviceId", "status"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "miningSessions": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "deviceId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "earnings": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "timestamp"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "wallets": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "schedules": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "settings": {
+      "$userId": { ".read": "auth != null && auth.uid === $userId && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "auditLogs": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "serverTimestamp"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "profitabilitySnapshots": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "telemetryLive": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "deviceId"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "telemetryRollups": {
+      ".read": "auth != null && query.orderByChild === 'ownerId' && query.equalTo === auth.uid",
+      ".indexOn": ["ownerId", "deviceId", "intervalEnd"],
+      "$id": { ".read": "auth != null && data.child('ownerId').val() === auth.uid", ".write": false }
+    },
+    "pairingCodes": { ".read": false, ".write": false },
+    "deviceCommandCounters": { ".read": false, ".write": false }
+  }
+}

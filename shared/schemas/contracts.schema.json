@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://personal-miner.local/schemas/contracts.schema.json",
+  "$defs": {
+    "User": { "type": "object", "required": ["userId", "email", "displayName", "timezone", "createdAt", "updatedAt"] },
+    "Device": { "type": "object", "required": ["deviceId", "ownerId", "deviceType", "deviceName", "operationalState", "availability", "hardware", "capabilities", "softwareVersion", "lastSeen", "createdAt", "updatedAt", "lastError"] },
+    "DeviceCommand": { "type": "object", "required": ["commandId", "deviceId", "ownerId", "type", "payload", "priority", "sequence", "createdAt", "expiresAt", "status"] },
+    "CommandResult": { "type": "object", "required": ["success", "message"] },
+    "MiningSession": { "type": "object", "required": ["sessionId", "deviceId", "ownerId", "state", "createdAt", "updatedAt"] },
+    "Earning": { "type": "object", "required": ["earningId", "ownerId", "coin", "amount", "timestamp", "source", "status"] },
+    "Wallet": { "type": "object", "required": ["walletId", "ownerId", "coin", "network", "walletAddress"] },
+    "Schedule": { "type": "object", "required": ["scheduleId", "ownerId", "deviceIds", "timezone", "startTime", "enabled"] },
+    "Settings": { "type": "object", "required": ["ownerId", "timezone", "electricityPriceINRPerKWh", "telemetryIntervalSeconds", "backendTimeoutSeconds", "maxSessionDurationMinutes", "maxGpuTemperatureC", "maxCpuTemperatureC", "minBatteryPercent", "chargingRequired"] },
+    "AuditLog": { "type": "object", "required": ["auditId", "ownerId", "actor", "userId", "event", "result", "metadata", "serverTimestamp"] },
+    "Telemetry": { "type": "object", "required": ["telemetryId", "ownerId", "deviceId", "intervalStart", "intervalEnd", "sampleCount", "metrics", "source"] },
+    "ProfitabilitySnapshot": { "type": "object", "required": ["snapshotId", "ownerId", "algorithm", "coin", "status", "source", "createdAt"] }
+  }
+}

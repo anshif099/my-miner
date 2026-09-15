@@ -1,0 +1,23 @@
+{
+  "name": "personal-miner-controller",
+  "version": "0.1.0",
+  "private": true,
+  "engines": { "node": ">=20.9.0" },
+  "workspaces": ["web", "backend/functions", "shared"],
+  "scripts": {
+    "build": "npm run build -w @miner/shared && npm run build -w @miner/functions && npm run build -w @miner/web",
+    "typecheck": "npm run build -w @miner/shared && npm run typecheck -w @miner/shared && npm run typecheck -w @miner/functions && npm run typecheck -w @miner/web",
+    "lint": "npm run lint -w @miner/functions && npm run lint -w @miner/web",
+    "test": "npm run build -w @miner/shared && npm run test -w @miner/shared && npm run test -w @miner/functions && npm run test -w @miner/web",
+    "test:rules": "firebase emulators:exec --only database \"npm run test:rules -w @miner/functions\"",
+    "emulators": "firebase emulators:start --only auth,database,functions",
+    "dev": "npm run dev -w @miner/web",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "firebase-tools": "14.27.0",
+    "prettier": "3.9.6"
+  }
+}
+
