@@ -9,7 +9,8 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint . --max-warnings=0",
     "test": "vitest run",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "prebuild": "npm run build --workspace=@miner/shared"
   },
   "dependencies": {
     "@hookform/resolvers": "5.9.1",
