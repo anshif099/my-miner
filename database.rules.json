@@ -41,7 +41,7 @@
     },
     "settings": {
       "$userId": {
-        ".read": "auth != null && auth.uid === $userId && data.child('ownerId').val() === auth.uid",
+        ".read": "auth != null && auth.uid === $userId && (!data.exists() || data.child('ownerId').val() === auth.uid)",
         ".write": "auth != null && auth.uid === $userId && newData.child('ownerId').val() === auth.uid",
         ".validate": "newData.hasChildren(['ownerId', 'timezone', 'electricityPriceINRPerKWh', 'telemetryIntervalSeconds', 'backendTimeoutSeconds', 'maxSessionDurationMinutes', 'maxGpuTemperatureC', 'maxCpuTemperatureC', 'minBatteryPercent', 'chargingRequired', 'updatedAt'])"
       }
